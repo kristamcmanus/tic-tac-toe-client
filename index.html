@@ -39,9 +39,9 @@
       <form id="change-password">
         <h3>Change Password</h3>
         <label for="password">Old Password: </label>
-        <input type="password" name="passwords[old]" placeholder="old password">
+        <input type="password" name="passwords[old]" placeholder="old password" required>
         <label for="password">New Password: </label>
-        <input type="password" name="passwords[new]" placeholder="new password">
+        <input type="password" name="passwords[new]" placeholder="new password" required>
         <button type="submit">Submit</button>
       </form>
 
@@ -50,15 +50,17 @@
       <button type="submit" id="new-game">New Game</button>
 
       <div id="game-board">
-        <div data-cell-index='0' class="cell">0</div>
-        <div data-cell-index='1' class="cell">1</div>
-        <div data-cell-index='2' class="cell">2</div>
-        <div data-cell-index='3' class="cell">3</div>
-        <div data-cell-index='4' class="cell">4</div>
-        <div data-cell-index='5' class="cell">5</div>
-        <div data-cell-index='6' class="cell">6</div>
-        <div data-cell-index='7' class="cell">7</div>
-        <div data-cell-index='8' class="cell">8</div>
+        <div class="row">
+          <div data-cell-index='0' class="col-4 box" id="cell-0"></div>
+          <div data-cell-index='1' class="col-4 box" id="cell-1"></div>
+          <div data-cell-index='2' class="col-4 box" id="cell-2"></div>
+          <div data-cell-index='3' class="col-4 box" id="cell-3"></div>
+          <div data-cell-index='4' class="col-4 box" id="cell-4"></div>
+          <div data-cell-index='5' class="col-4 box" id="cell-5"></div>
+          <div data-cell-index='6' class="col-4 box" id="cell-6"></div>
+          <div data-cell-index='7' class="col-4 box" id="cell-7"></div>
+          <div data-cell-index='8' class="col-4 box" id="cell-8"></div>
+        </div>
       </div>
 
     </body>
