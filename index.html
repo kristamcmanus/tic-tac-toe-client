@@ -16,8 +16,8 @@
 
       <div id="messages"></div>
 
-      <h3>Sign Up</h3>
       <form id="sign-up">
+        <h3>Sign Up</h3>
         <label for="email">Email: </label>
         <input name="credentials[email]" type="email" placeholder="jdoe@gmail.com" required>
         <label for="password">Password: </label>
@@ -27,8 +27,8 @@
         <button type="submit">Submit</button>
       </form>
 
-      <h3>Sign In</h3>
       <form id="sign-in">
+        <h3>Sign In</h3>
         <label for="email">Email: </label>
         <input name="credentials[email]" type="email" placeholder="jdoe@gmail.com" required>
         <label for="password">Password: </label>
@@ -37,6 +37,7 @@
       </form>
 
       <form id="change-password">
+        <h3>Change Password</h3>
         <label for="password">Old Password: </label>
         <input type="password" name="passwords[old]" placeholder="old password">
         <label for="password">New Password: </label>
@@ -46,23 +47,19 @@
 
       <button id="sign-out">Sign Out</button>
 
-      <table>
-        <tr>
-          <td></td>
-          <td class="vertical"></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td class="horizontal"></td>
-          <td class="vertical horizontal"></td>
-          <td class="horizontal"></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td class="vertical"></td>
-          <td></td>
-        </tr>
-      </table>
+      <button type="submit" id="new-game">New Game</button>
+
+      <div id="game-board">
+        <div data-cell-index='0' class="cell">0</div>
+        <div data-cell-index='1' class="cell">1</div>
+        <div data-cell-index='2' class="cell">2</div>
+        <div data-cell-index='3' class="cell">3</div>
+        <div data-cell-index='4' class="cell">4</div>
+        <div data-cell-index='5' class="cell">5</div>
+        <div data-cell-index='6' class="cell">6</div>
+        <div data-cell-index='7' class="cell">7</div>
+        <div data-cell-index='8' class="cell">8</div>
+      </div>
 
     </body>
 </html>
