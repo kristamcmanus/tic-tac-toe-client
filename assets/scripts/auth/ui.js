@@ -35,23 +35,19 @@ const onSignOutSuccess = function () {
   store.user = null
 }
 
+// start a new game
 const onNewGameSuccess = function (response) {
-  store.game = response.game
+  store.user.game = response.game
   $('#messages').text('New game started!')
-  $('#game-board').show()
 }
 
+// clicking on a space that will leave either an `x` or `o`
+let currentPlayer = 'x'
 const onMakeMoveSuccess = function (event) {
   $('#messages').text("You've made a move!")
-  $('#cell-0').add()
-  $('#cell-1').add()
-  $('#cell-2').add()
-  $('#cell-3').add()
-  $('#cell-4').add()
-  $('#cell-5').add()
-  $('#cell-6').add()
-  $('#cell-7').add()
-  $('#cell-8').add()
+  const cell = event.target.id
+  box.text(currentPlayer)
+  currentPlayer = currentPlayer === 'o' ? 'x' : 'o'
 }
 
 const onError = function (err) {

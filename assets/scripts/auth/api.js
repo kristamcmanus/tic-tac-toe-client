@@ -23,7 +23,7 @@ const signIn = function (formData) {
 const changePassword = function (formData) {
   return $.ajax({
     method: 'PATCH',
-    url: config.apiUrl + "/change-password",
+    url: config.apiUrl + '/change-password',
     data: formData,
     headers: {
       Authorization: 'Bearer ' + store.user.token
@@ -54,17 +54,17 @@ const newGame = function () {
 const makeMove = function () {
   return $.ajax({
     method: 'PATCH',
-    url: config.apiUrl + '/games/:id',
+    url: config.apiUrl + '/games/' + store.user._id,
     headers: {
-      Authorization: 'Bearer ' + store.user.token
+      Authorization: 'Bearer ' + store.game.user.token
     },
     data: {
       "game": {
         "cell": {
-          "index": 0,
-          "value": "x"
+          "index": "${data-cell-index}",
+          "value": "${value}"
         },
-        "over": false
+        "over": "${store.game.over}"
       }
     }
   })
