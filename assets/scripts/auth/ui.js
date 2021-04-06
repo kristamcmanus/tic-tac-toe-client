@@ -39,15 +39,13 @@ const onSignOutSuccess = function () {
 const onNewGameSuccess = function (response) {
   store.user.game = response.game
   $('#messages').text('New game started!')
+  $('#new-game').trigger('reset')
+  $('.box').trigger('reset')
 }
 
-// clicking on a space that will leave either an `x` or `o`
-let currentPlayer = 'x'
+// placing an `x` or `o` on the board
 const onMakeMoveSuccess = function (event) {
-  $('#messages').text("You've made a move!")
-  const cell = event.target.id
-  box.text(currentPlayer)
-  currentPlayer = currentPlayer === 'o' ? 'x' : 'o'
+  store.user.game = response.game
 }
 
 const onError = function (err) {
