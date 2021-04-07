@@ -54,17 +54,18 @@ const onNewGame = function () {
 }
 
 // player must start as `x`
-let currentPlayer = 'x'
+let currentPlayer = 'X'
 const onMakeMove = function (event) {
   const box = $(event.target)
   const index = event.target.id
   // if box is empty, player can place move there
   if (box.text() === '') {
     box.text(currentPlayer)
-    currentPlayer = currentPlayer === 'x' ? 'o' : 'x'
+    currentPlayer = currentPlayer === 'X' ? 'O' : 'X'
+    $('#xo-switch-message').text(`It is player ${currentPlayer}'s turn now!`)
   // if it is taken, error message will appear
   } else {
-    $('#messages').text('Invalid Move: Space has already been selected.')
+    $('#invalid-move-message').text('Invalid Move: Space has already been selected.')
   }
   $(event.target).data(index, 'value')
   api.makeMove()

@@ -30,6 +30,8 @@ const onSignOutSuccess = function () {
   $('#change-password').hide()
   $('#new-game').hide()
   $('#game-board').hide()
+  $('#xo-switch-message').hide()
+  $('#invalid-move-message').hide()
   $('#sign-up').show()
   $('#sign-in').show()
   store.user = null
@@ -40,7 +42,6 @@ const onNewGameSuccess = function (response) {
   store.user.game = response.game
   $('#messages').text('New game started!')
   $('#new-game').trigger('reset')
-  $('.box').trigger('reset')
 }
 
 // placing an `x` or `o` on the board
