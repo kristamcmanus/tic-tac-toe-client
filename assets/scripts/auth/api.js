@@ -51,20 +51,20 @@ const newGame = function () {
   })
 }
 
-const makeMove = function (index, value) {
+const makeMove = function (index, value, gameOver) {
   return $.ajax({
     method: 'PATCH',
-    url: config.apiUrl + `/games/${store.game._id}`,
+    url: config.apiUrl + '/games/' +store.game._id,
     headers: {
-      Authorization: `Bearer ${store.user.token}`
+      Authorization: 'Bearer ' +  store.user.token
     },
     data: {
       game: {
         cell: {
-          index: 'data-cell-index', // 'index',
-          value: currentPlayer // value
+          index: index,
+          value: value
         },
-        over: store.game.over // false
+        over: gameOver
       }
     }
   })
