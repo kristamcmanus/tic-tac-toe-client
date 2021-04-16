@@ -6,6 +6,8 @@ const ui = require('./ui')
 // import the getFormFields function
 const getFormFields = require('../../../lib/get-form-fields')
 
+const store = require('../store')
+
 const onSignUp = function (event) {
   // prevents page from refreshing when button is clicked
   event.preventDefault()
@@ -45,9 +47,18 @@ const onSignOut = function () {
 
 // starting new game
 const onNewGame = function () {
-  event.preventDefault()
+  currentPlayer = 'X'
+  // if (currentPlayer === 'O') {
+  //   return currentPlayer === 'X'
+  // }
+  // event.preventDefault()
   // display game board when new game starts
-  $('#game-board').show()
+  // $('#game-board').show()
+  // setTimeout(fade_out, 5000);
+  // function fade_out() {
+  //   $('#xo-switch-message').fadeOut().empty();
+  //   $('#invalid-move-message').fadeOut().empty();
+  // }
   api.newGame()
     .then(ui.onNewGameSuccess)
     .catch(ui.onError)
@@ -55,22 +66,54 @@ const onNewGame = function () {
 
 // player must start as `x`
 let currentPlayer = 'X'
-const onMakeMove = function (event) {
+
+const onMakeMove = function () {
+  if (onCheckWinner()) return
   const box = $(event.target)
-  const index = event.target.id
+  const index = $(event.target).data('cell-index')
   // if box is empty, player can place move there
   if (box.text() === '') {
     box.text(currentPlayer)
+    store.game.cells[index] = currentPlayer
+    // placing `x`s and `o`s on the board
     currentPlayer = currentPlayer === 'X' ? 'O' : 'X'
-    $('#xo-switch-message').text(`It is player ${currentPlayer}'s turn now!`)
-  // if it is taken, error message will appear
+    $('#turn-outcome-message').text(`It is player ${currentPlayer}'s turn now!`)
+  // if space is taken, error message will appear
   } else {
-    $('#invalid-move-message').text('Invalid Move: Space has already been selected.')
+    ui.onSpaceTakenSuccess()
   }
-  $(event.target).data(index, 'value')
-  api.makeMove()
-    .then(ui.onMakeMoveSuccess)
-    .catch(ui.onError)
+
+  const value = $(event.target).text()
+    api.makeMove(index, value, onCheckWinner())
+      .then(ui.onCheckWinnerSuccess)
+      .catch(ui.onError)
+    }
+
+  // check whether `x` or `o` has won the game or if it's a tie
+  const onCheckWinner = function () {
+    // store.game = response.game
+      // top row winning combos
+      if ((store.game.cells[0] === store.game.cells[1] && store.game.cells[1] === store.game.cells[2] && store.game.cells[0] !== '') ||
+        // middle row winning combos
+       (store.game.cells[3] === store.game.cells[4] && store.game.cells[4] === store.game.cells[5] && store.game.cells[4] !== '') ||
+        // bottom row winning combos
+       (store.game.cells[6] === store.game.cells[7] && store.game.cells[7] === store.game.cells[8] && store.game.cells[7] !== '') ||
+        // first column winning combos
+       (store.game.cells[0] === store.game.cells[3] && store.game.cells[3] === store.game.cells[6] && store.game.cells[0] !== '') ||
+        // second column winning combos
+       (store.game.cells[1] === store.game.cells[4] && store.game.cells[4] === store.game.cells[7] && store.game.cells[1] !== '') ||
+        // third column winning combos
+       (store.game.cells[2] === store.game.cells[5] && store.game.cells[5] === store.game.cells[8] && store.game.cells[2] !== '') ||
+        // diagonal winning combos
+       (store.game.cells[0] === store.game.cells[4] && store.game.cells[4] === store.game.cells[8] && store.game.cells[0] !== '') ||
+        // diagonal winning combos
+       (store.game.cells[2] === store.game.cells[4] && store.game.cells[4] === store.game.cells[6] && store.game.cells[2] !== '')) {
+         return true
+       } else if (store.game.cells[0] && store.game.cells[1] && store.game.cells[2] && store.game.cells[3] && store.game.cells[4] && store.game.cells[5] && store.game.cells[6] && store.game.cells[7] && store.game.cells[8]) {
+        ui.onTieSuccess()
+      } else {
+      return false
+    }
   }
 
 module.exports = {
@@ -79,5 +122,6 @@ module.exports = {
   onChangePassword,
   onSignOut,
   onNewGame,
-  onMakeMove
+  onMakeMove,
+  onCheckWinner
 }
