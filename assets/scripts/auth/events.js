@@ -47,6 +47,7 @@ const onSignOut = function () {
 
 // starting new game
 const onNewGame = function () {
+  // starts player as `x` when new game button is clicked
   currentPlayer = 'X'
   api.newGame()
     .then(ui.onNewGameSuccess)

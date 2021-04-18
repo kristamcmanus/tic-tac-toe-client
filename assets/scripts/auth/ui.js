@@ -8,7 +8,6 @@ const onSignUpSuccess = function () {
 }
 
 const onSignInSuccess = function (response) {
-  console.log(response)
   store.user = response.user
   $('#messages').text('Successfully signed in!')
   $('#change-password').show()
@@ -50,18 +49,19 @@ const onSpaceTakenSuccess = function () {
   $('#game-messages').text("Oh no, this space has already been selected. Try again!")
 }
 
-// Checks if either `x` or `o` has won the game
+// displays message alerting user they have won the game
 const onCheckWinnerSuccess = function (response) {
   if (response.game.over) {
   $('#game-messages').text(`You won the game! Click 'New Game' to play again.`)
   }
 }
 
-// displays message for a tie game
+// displays message alerting user there is a tie game
 const onTieSuccess = function (response) {
   $('#game-messages').text("It's a tie! Click 'New Game' to play again!")
 }
 
+// displays error message
 const onError = function (err) {
   console.error(err)
   $('#messages').text('Hmm...something went wrong. Please try again!')
