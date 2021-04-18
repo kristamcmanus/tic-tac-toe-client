@@ -21,7 +21,6 @@ $(() => {
   $('#sign-out').on('click', events.onSignOut)
   // shows game board when `New Game` button is clicked
   $('#new-game').on('click', events.onNewGame)
-  // $('#game-board').on('click', events.onMakeMove)
   // displays `x` and `o` on board when boxes are clicked
   $('.box').on('click', events.onMakeMove)
 })

@@ -48,17 +48,6 @@ const onSignOut = function () {
 // starting new game
 const onNewGame = function () {
   currentPlayer = 'X'
-  // if (currentPlayer === 'O') {
-  //   return currentPlayer === 'X'
-  // }
-  // event.preventDefault()
-  // display game board when new game starts
-  // $('#game-board').show()
-  // setTimeout(fade_out, 5000);
-  // function fade_out() {
-  //   $('#xo-switch-message').fadeOut().empty();
-  //   $('#invalid-move-message').fadeOut().empty();
-  // }
   api.newGame()
     .then(ui.onNewGameSuccess)
     .catch(ui.onError)
@@ -67,6 +56,7 @@ const onNewGame = function () {
 // player must start as `x`
 let currentPlayer = 'X'
 
+// alternates `x` and `o` turns
 const onMakeMove = function () {
   if (onCheckWinner()) return
   const box = $(event.target)
@@ -109,12 +99,14 @@ const onMakeMove = function () {
         // diagonal winning combos
        (store.game.cells[2] === store.game.cells[4] && store.game.cells[4] === store.game.cells[6] && store.game.cells[2] !== '')) {
          return true
+         // checks for tie
        } else if (store.game.cells[0] && store.game.cells[1] && store.game.cells[2] && store.game.cells[3] && store.game.cells[4] && store.game.cells[5] && store.game.cells[6] && store.game.cells[7] && store.game.cells[8]) {
         ui.onTieSuccess()
       } else {
       return false
     }
   }
+
 
 module.exports = {
   onSignUp,

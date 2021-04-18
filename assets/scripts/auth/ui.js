@@ -48,29 +48,21 @@ const onNewGameSuccess = function (response) {
   console.log('New game button was clicked.')
 }
 
-// placing an `x` or `o` on the board
-// const onMakeMoveSuccess = function (response) {
-//   store.game = response.game
-// }
+// display message for when space has already been taken
+const onSpaceTakenSuccess = function () {
+  $('#turn-outcome-message').text("Oh no, this space has already been selected. Try again!")
+}
 
-// const onTurnSuccess = function (response) {
-//   $('#xo-switch-message').text(`It is player ${currentPlayer}'s turn now!`)
-// }
-
+// Checks if either `x` of `o` has won the game
 const onCheckWinnerSuccess = function (response) {
   if (response.game.over) {
-  // store.game = response.game
-  $('#turn-outcome-message').text(`Player won the game! Click 'New Game' to play again.`)
+  $('#turn-outcome-message').text("You won the game! Click 'New Game' to play again.")
   }
 }
 
-const onTieSuccess = function () {
-  // store.gameOver = true
+// displays message for a tie game
+const onTieSuccess = function (response) {
   $('#turn-outcome-message').text("It's a tie! Click 'New Game' to play again!")
-}
-
-const onSpaceTakenSuccess = function () {
-  $('#invalid-move-message').text(`Oh no, this space has already been selected. Try again!`)
 }
 
 const onError = function (err) {
@@ -84,10 +76,8 @@ module.exports = {
   onChangePasswordSuccess,
   onSignOutSuccess,
   onNewGameSuccess,
-  // onTurnSuccess,
-  // onMakeMoveSuccess,
+  onSpaceTakenSuccess,
   onCheckWinnerSuccess,
   onTieSuccess,
-  onSpaceTakenSuccess,
   onError
 }
