@@ -67,7 +67,7 @@ const onMakeMove = function () {
     store.game.cells[index] = currentPlayer
     // placing `x`s and `o`s on the board
     currentPlayer = currentPlayer === 'X' ? 'O' : 'X'
-    $('#turn-outcome-message').text(`It is player ${currentPlayer}'s turn now!`)
+    $('#game-messages').text(`It is player ${currentPlayer}'s turn now!`)
   // if space is taken, error message will appear
   } else {
     ui.onSpaceTakenSuccess()
@@ -81,7 +81,6 @@ const onMakeMove = function () {
 
   // check whether `x` or `o` has won the game or if it's a tie
   const onCheckWinner = function () {
-    // store.game = response.game
       // top row winning combos
       if ((store.game.cells[0] === store.game.cells[1] && store.game.cells[1] === store.game.cells[2] && store.game.cells[0] !== '') ||
         // middle row winning combos
@@ -101,7 +100,7 @@ const onMakeMove = function () {
          return true
          // checks for tie
        } else if (store.game.cells[0] && store.game.cells[1] && store.game.cells[2] && store.game.cells[3] && store.game.cells[4] && store.game.cells[5] && store.game.cells[6] && store.game.cells[7] && store.game.cells[8]) {
-        ui.onTieSuccess()
+         ui.onTieSuccess()
       } else {
       return false
     }

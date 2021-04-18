@@ -30,8 +30,7 @@ const onSignOutSuccess = function () {
   $('#change-password').hide()
   $('#new-game').hide()
   $('#game-board').hide()
-  $('#invalid-move-message').text('')
-  $('#turn-outcome-message').text('')
+  $('#game-messages').text('')
   $('#sign-up').show()
   $('#sign-in').show()
   store.user = null
@@ -43,26 +42,24 @@ const onNewGameSuccess = function (response) {
   $('#game-board').show()
   $('#messages').text('New game started!')
   $('.box').text('')
-  $('#invalid-move-message').text('')
-  $('#turn-outcome-message').text('')
-  console.log('New game button was clicked.')
+  $('#game-messages').text('')
 }
 
 // display message for when space has already been taken
 const onSpaceTakenSuccess = function () {
-  $('#turn-outcome-message').text("Oh no, this space has already been selected. Try again!")
+  $('#game-messages').text("Oh no, this space has already been selected. Try again!")
 }
 
-// Checks if either `x` of `o` has won the game
+// Checks if either `x` or `o` has won the game
 const onCheckWinnerSuccess = function (response) {
   if (response.game.over) {
-  $('#turn-outcome-message').text("You won the game! Click 'New Game' to play again.")
+  $('#game-messages').text(`You won the game! Click 'New Game' to play again.`)
   }
 }
 
 // displays message for a tie game
 const onTieSuccess = function (response) {
-  $('#turn-outcome-message').text("It's a tie! Click 'New Game' to play again!")
+  $('#game-messages').text("It's a tie! Click 'New Game' to play again!")
 }
 
 const onError = function (err) {
