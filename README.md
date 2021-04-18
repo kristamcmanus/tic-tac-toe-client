@@ -19,6 +19,8 @@
 - As a user, I can place my move on the board.
 - As a user, I have the option to play a new game if I'd like.
 
-### Wireframes   
+### Wireframes
 - [Welcome screen](https://imgur.com/pRAJXhr)
 - [Logged in screen](https://imgur.com/s2F21iD)
+
+You can play the game at the deployed app [here.](https://kristamcmanus.github.io/tic-tac-toe-client/)
