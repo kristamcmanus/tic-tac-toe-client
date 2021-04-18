@@ -1,4 +1,5 @@
 @import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
 
 * {
 	box-sizing: border-box;
@@ -8,12 +9,13 @@
 body {
 	background-color: #000;
 	color: #fff;
-	font-family: "Lucida Console", Monaco, monospace;
+	font-family: "Lucida Console", Monaco, arial;
 }
 h1 {
 	display: flex;
 	justify-content: center;
 	margin-top: 20px;
+	font-family: "Zen Dots", arial;
 }
 form {
 	margin-left: 40px;
@@ -29,7 +31,7 @@ button {
 	border-radius: 5px;
 	padding: 8px 28px;
 	// display: inline-block;
-	font-family: "Lucida Console", Monaco, monospace;
+	font-family: "Lucida Console", Monaco, arial;
 	font-size: 14px;
 	letter-spacing: 1px;
 	cursor: pointer;
