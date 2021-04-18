@@ -14,55 +14,68 @@
     <body>
       <h1 class="neon">Tic Tac Toe</h1>
 
+      <!-- display messages -->
       <div id="messages"></div>
 
-      <form id="sign-up">
-        <h3>Sign Up</h3>
-        <label for="email">Email: </label>
-        <input name="credentials[email]" type="email" placeholder="jdoe@gmail.com" required>
-        <label for="password">Password: </label>
-        <input name="credentials[password]" type="password" placeholder="password" required>
-        <label for="password">Confirm Password: </label>
-        <input name="credentials[password_confirmation]" type="password" placeholder="confirm password" required>
-        <button type="submit">Submit</button>
-      </form>
-
-      <form id="sign-in">
-        <h3>Sign In</h3>
-        <label for="email">Email: </label>
-        <input name="credentials[email]" type="email" placeholder="jdoe@gmail.com" required>
-        <label for="password">Password: </label>
-        <input name="credentials[password]" type="password" placeholder="password" required>
-        <button type="submit">Submit</button>
-      </form>
-
-      <form id="change-password">
-        <h3>Change Password</h3>
-        <label for="password">Old Password: </label>
-        <input type="password" name="passwords[old]" placeholder="old password" required>
-        <label for="password">New Password: </label>
-        <input type="password" name="passwords[new]" placeholder="new password" required>
-        <button type="submit">Submit</button>
-      </form>
-
+      <!-- sign out button -->
       <button id="sign-out">Sign Out</button>
 
+      <!-- sign up form -->
+
+      <div id="container">
+        <form id="sign-up">
+          <h3>Sign Up</h3>
+          <label for="email">Email: </label>
+          <input name="credentials[email]" type="email" placeholder="jdoe@gmail.com" required>
+          <label for="password">Password: </label>
+          <input name="credentials[password]" type="password" placeholder="password" required>
+          <label for="password">Confirm Password: </label>
+          <input name="credentials[password_confirmation]" type="password" placeholder="confirm password" required>
+          <button type="submit" class="reg-button">Submit</button>
+        </form>
+
+        <!-- sign in form -->
+        <form id="sign-in">
+          <h3>Sign In</h3>
+          <label for="email">Email: </label>
+          <input name="credentials[email]" type="email" placeholder="jdoe@gmail.com" required>
+          <label for="password">Password: </label>
+          <input name="credentials[password]" type="password" placeholder="password" required>
+          <button type="submit" class="reg-button">Submit</button>
+        </form>
+      </div>
+
+      <!-- change password form -->
+      <form id="change-password">
+        <h3>Change Password</h3>
+        <br>
+        <label for="password">Old Password: </label>
+        <input type="password" name="passwords[old]" placeholder="old password" required>
+        <br>
+        <label for="password">New Password: </label>
+        <input type="password" name="passwords[new]" placeholder="new password" required>
+        <br>
+        <button type="submit">Submit</button>
+      </form>
+
+      <!-- new game button -->
       <button type="submit" id="new-game">New Game</button>
+
+      <!-- game outcome and `x` `o` turn messages -->
       <div id="turn-outcome-message"></div>
-      <div id="invalid-move-message"></div>
 
       <!-- tic tac toe board displayed here -->
       <div id="game-board">
         <div class="row">
-          <div data-cell-index="0" class="col-4 box" id="0"></div>
-          <div data-cell-index="1" class="col-4 box" id="1"></div>
-          <div data-cell-index="2" class="col-4 box" id="2"></div>
-          <div data-cell-index="3" class="col-4 box" id="3"></div>
-          <div data-cell-index="4" class="col-4 box" id="4"></div>
-          <div data-cell-index="5" class="col-4 box" id="5"></div>
-          <div data-cell-index="6" class="col-4 box" id="6"></div>
-          <div data-cell-index="7" class="col-4 box" id="7"></div>
-          <div data-cell-index="8" class="col-4 box" id="8"></div>
+          <div data-cell-index="0" class="col-4 box"></div>
+          <div data-cell-index="1" class="col-4 box"></div>
+          <div data-cell-index="2" class="col-4 box"></div>
+          <div data-cell-index="3" class="col-4 box"></div>
+          <div data-cell-index="4" class="col-4 box"></div>
+          <div data-cell-index="5" class="col-4 box"></div>
+          <div data-cell-index="6" class="col-4 box"></div>
+          <div data-cell-index="7" class="col-4 box"></div>
+          <div data-cell-index="8" class="col-4 box"></div>
         </div>
       </div>
 
